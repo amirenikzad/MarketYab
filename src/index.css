@@ -1,0 +1,137 @@
+@font-face {
+  font-family: 'Dana';
+  src: url('/src/Dana-Black.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Danat';
+  src: url('/src/Dana-Thin.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap");
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  font-family: 'Dana', sans-serif;
+}
+#root,
+.app .content {
+  height: 100%;
+  width: 100%;
+  font-family: 'Dana', sans-serif;
+}
+.app {
+  display: flex;
+  position: relative;
+  width: 100%;
+  overflow-y: hidden;
+  height: 100vh;
+}
+::-webkit-scrollbar {
+  /* display: none; */
+  width: 0.6rem;
+}
+::-webkit-scrollbar-track {
+  background: #e0e0e0;
+}
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 0.5rem;
+}
+::-webkit-scrollbar-track:hover {
+  background: #555;
+}
+.sidebar,
+.content {
+  height: 100vh;
+  overflow-y: scroll !important;
+}
+.sidebar {
+  height: 100%;
+  width: auto;
+  /* width: 20%; */
+  padding: 0rem 1rem 0rem 0rem !important;
+  margin: 0 !important;
+  /* padding: 0 !important; */
+  font-family: 'Dana', sans-serif;
+}
+
+.sidebar::-webkit-scrollbar,
+.content::-webkit-scrollbar {
+  display: none !important;
+}
+.transaction-container::-webkit-scrollbar {
+  display: block !important;
+}
+.transaction-container::-webkit-scrollbar-thumb {
+  background: #888 !important;
+}
+.transaction-container::-webkit-scrollbar-track {
+  background: #e0e0e0 !important;
+}
+/* ------------------------------- */
+.login-span {
+  font-size: 16px;
+  font-weight: bold;
+  color: #149818da; /* Green color */
+  background-color: #f0f0f0; /* Light gray background */
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc; /* Light gray border */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  text-transform: uppercase;
+  /* cursor: pointer; */
+  transition: background-color 0.3s ease, color 0.3s ease;
+  
+}
+
+.login-span:hover {
+  background-color: #4CAF50; /* Green background on hover */
+  color: #fff; /* White text on hover */
+}
+.logincontainer {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #f5f5f5cd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 120px;
+}
+
+.loginlabel {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.logincenter {
+  font-size: 50px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+  /* display: inline-block; */
+  display: block;
+  padding: 10px 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.logininput {
+  padding: 15px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 8px;
+}
