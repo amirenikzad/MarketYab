@@ -35,15 +35,21 @@ Welcome to the **Market Yab Admin Panel** repository! This is the central hub fo
 ##Install the dependencies
 
 When you run the command:
--npm install
-This installs all the necessary packages and dependencies listed in the package.json file for the project.
+   ```bash
+   npm install
+```
+
+##This installs all the necessary packages and dependencies listed in the package.json file for the project.
 These dependencies are essential for running the project, including libraries like React, MUI, Redux, and others. 
 Once installed, these packages are saved in the node_modules folder, which is created automatically.
 
 Start the development server:
 
 After installing the dependencies, you can start the development server with:
--npm start
+   ```bash
+   npm start
+```
+
 This command runs the application in development mode, and a local server is started.
 By default, the app will be accessible at http://localhost:3000.
 Any changes you make in the source code will automatically reload the app in the browser.
