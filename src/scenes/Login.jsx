@@ -35,7 +35,7 @@ const Login = () => {
 
   const proceedLogin = async (e) => {
     e.preventDefault();
-    const link = "http://127.0.0.1:8000";
+    const link = "http://192.168.190.117:11111"; //http://127.0.0.1:8000
     if (isValidate()) {
       setLoading(true);
       try {
@@ -55,11 +55,6 @@ const Login = () => {
 
         if (foundUser) {
           
-          // localStorage.setItem("id", foundUser.id);
-          // localStorage.setItem("jwt", data.jwt);
-          // localStorage.setItem("link", link);
-          
-          // navigate("/");
           if (data.jwt) {
             localStorage.setItem("id", foundUser.id);
             localStorage.setItem("jwt", data.jwt);

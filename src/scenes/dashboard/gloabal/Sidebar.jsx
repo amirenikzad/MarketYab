@@ -23,7 +23,6 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
       style={{
         color: colors.grey[100],
         alignContent:"right" ,
-        // alignItems:"start",
         paddingLeft: "150px",
         
         
@@ -77,7 +76,7 @@ function Sidebar() {
         <MySidebar
           
           collapsed={isCollapsed}
-          backgroundColor={colors.greenAccent[900]}//primary[400] 
+          backgroundColor={colors.greenAccent[900]}
           height="260vh"
           
         >

@@ -5,25 +5,18 @@ import interactionPlugin from "@fullcalendar/interaction";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import listPlugin from "@fullcalendar/list";
 import { tokens } from "../theme";
-import { formatDate } from "@fullcalendar/core";
-import {
-  Box,
-  List,
-  ListItem,
-  ListItemText,
-  Typography,
-  useTheme,
-} from "@mui/material";
-import Header from "../components/Header";
+import { Box, Typography, useTheme } from "@mui/material";
+import EventList from "./EventList";
+export let currentEvents = [];
+export let setCurrentEvents;
 
 export default function Calendar() {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-  const [currentEvents, setCurrentEvents] = useState([]);
+  [currentEvents, setCurrentEvents] = useState([]);
 
   useEffect(() => {
-    const eventsFromLocalStorage =
-      JSON.parse(localStorage.getItem("events")) || [];
+    const eventsFromLocalStorage = JSON.parse(localStorage.getItem("events")) || [];
     setCurrentEvents(eventsFromLocalStorage);
   }, []);
 
@@ -54,20 +47,15 @@ export default function Calendar() {
   };
 
   const handleEventClick = (selected) => {
-    if (
-      window.confirm(
-        `Are you sure you want to delete this event '${selected.event.title}'?`
-      )
-    ) {
+    if (window.confirm(`Are you sure you want to delete this event '${selected.event.title}'?`)) {
       setCurrentEvents((prevEvents) => {
-        const updatedEvents = prevEvents.filter(
-          (event) => event.id !== selected.event.id
-        );
+        const updatedEvents = prevEvents.filter((event) => event.id !== selected.event.id);
         saveEventsToLocalStorage(updatedEvents);
         return updatedEvents;
       });
     }
   };
+
   const handleEventDrop = (info) => {
     const updatedEvents = currentEvents.map((event) => {
       if (event.id === info.event.id) {
@@ -94,50 +82,13 @@ export default function Calendar() {
           p="1rem"
           m="1rem 0rem"
         >
-          <Typography variant="h6" style={{ textAlign:"right" ,fontSize:"25px" }}>رویداد‌‌ها</Typography>
-          <List>
-            {currentEvents.length === 0 ? (
-              <Typography variant="h6" color="textSecondary" style={{ textAlign:"right" ,fontSize:"20px" }} >
-                رویداد‌‌ی وجود ندارد
-              </Typography>
-            ) : (
-              currentEvents.map((event) => (
-                <ListItem
-                  key={event.id}
-                  style={{ textAlign:"right" ,fontSize:"25px" }}
-                  sx={{
-                    backgroundColor: colors.greenAccent[800],
-                    margin: "10px 0",
-                    borderRadius: "2px",
-                    
-                  }}
-                >
-                  <ListItemText
-                    primary={event.title}
-                    secondary={
-                      <Typography>
-                        {formatDate(event.start, {
-                          year: "numeric",
-                          month: "short",
-                          day: "numeric",
-                        })}
-                      </Typography>
-                    }
-                  />
-                </ListItem>
-              ))
-            )}
-          </List>
+          <Typography variant="h6" style={{ textAlign: "right", fontSize: "25px" }}>رویداد‌‌ها</Typography>
+          <EventList events={currentEvents} colors={colors} />
         </Box>
         {/* calendar */}
         <Box flex="1 1 80%" borderRadius="0.5rem" p="1rem">
           <FullCalendar
-            plugins={[
-              dayGridPlugin,
-              timeGridPlugin,
-              interactionPlugin,
-              listPlugin,
-            ]}
+            plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, listPlugin]}
             initialView="dayGridMonth"
             headerToolbar={{
               left: "prev,next today",

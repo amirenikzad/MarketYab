@@ -1,8 +1,6 @@
 import { createContext, useState, useMemo } from "react";
 import { createTheme } from "@mui/material";
 
-//color desing tokens
-
 export const tokens = (mode) => ({
   ...(mode === "dark"
     ? {
@@ -131,10 +129,10 @@ export const themeSettins = (mode) => {
       ...(mode === "dark"
         ? {
             primary: {
-              main: colors.primary[500],//primary[500]
+              main: colors.primary[500],
             },
             secondary: {
-              main: colors.greenAccent[500],//greenAccent[500]
+              main: colors.greenAccent[500],
             },
             neutral: {
               main: colors.grey[500],
@@ -142,7 +140,7 @@ export const themeSettins = (mode) => {
               light: colors.grey[100],
             },
             background: {
-              default: "rgb(6 78 59)",//colors.primary[500]
+              default: "rgb(6 78 59)",
             },
           }
         : {

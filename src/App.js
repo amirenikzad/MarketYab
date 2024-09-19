@@ -23,15 +23,15 @@ function App() {
         <div className="app">
           <main className="content">
             <Routes>
-              <Route path="/login" element={<Login />} />
-              <Route path="/" element={loginState ? <Dashboard /> : <Navigate to="/login" />} />
-              <Route path="/orders" element={loginState ? <Orders /> : <Navigate to="/login" />} />
-              <Route path="/reservation" element={loginState ? <Reservation /> : <Navigate to="/login" />} />
-              <Route path="/faq" element={loginState ? <Faq /> : <Navigate to="/login" />} />
-              <Route path="/calendar" element={loginState ? <Calendar /> : <Navigate to="/login" />} />
+              {/* <Route path="/login" element={<Login />} /> */}
+              <Route path="/" element={ <Dashboard /> } />
+              <Route path="/orders" element={ <Orders />} />
+              <Route path="/reservation" element={ <Reservation />} />
+              <Route path="/faq" element={ <Faq />} />
+              <Route path="/calendar" element={ <Calendar />} />
             </Routes>
           </main>
-          {loginState && <Sidebar />}
+          {<Sidebar />}
         </div>
       </ThemeProvider>
     </ColorModeContext.Provider>

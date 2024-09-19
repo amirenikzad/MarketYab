@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from 'react';
 import { useTheme } from "@mui/material";
 import { ResponsiveBar } from "@nivo/bar";
 import { tokens } from "../theme";
@@ -6,10 +7,37 @@ import { mockBarData as data } from "../data/mockData";
 const BarChart = ({ isDashboard = false }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const [barchart, setBarchart] = useState([]);
+
+  useEffect(() => {
+    const fetchBarchart = async () => {
+      try {
+        const token = localStorage.getItem("jwt");
+        const link  = localStorage.getItem("link");
+        const response = await fetch(`${link}/v1/test`, {
+          method: "GET",
+          headers: {
+            "Authorization": `Bearer ${token}`,
+          },
+        });
+        const data = await response.json();
+        console.log("Barchart data: ", data);
+        
+        if (!response.ok) {
+          throw new Error("Failed to fetch Barchart");
+        }
+        setBarchart(data);
+      } catch (error) {
+        console.error("Error fetching Barchart:", error);
+      }
+    };
+  
+    fetchBarchart();
+  }, []);
 
   return (
     <ResponsiveBar
-      data={data}
+      data={data}//barchart
       theme={{
         axis: {
           domain: {

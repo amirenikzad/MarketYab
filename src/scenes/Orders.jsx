@@ -3,6 +3,7 @@ import { Box, useTheme, GlobalStyles } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { tokens } from "../theme";
 import Header from "../components/Header";
+import { mockDataOrders as data } from "../data/mockData";
 
 function Orders() {
   const theme = useTheme();
@@ -63,42 +64,26 @@ function Orders() {
       headerAlign: "right",
     },
     {
-      field: "store_name",
-      headerName: "نام مغازه",
-      flex: 1,
-      align: "right",
-      headerAlign: "right",
-    },
-    {
       field: "order_id",
       headerName: "شناسه سفارش",
       flex: 1,
       align: "right",
       headerAlign: "right",
     },
-    // {
-    //   field: "userId",
-    //   headerName: "شناسه کاربر",
-    //   type: "number",
-    //   align: "right",
-    //   headerAlign: "right",
-    // },
-    // {
-    //   field: "sellerId",
-    //   headerName: "شناسه فروشنده",
-    //   flex: 1,
-    //   cellClassName: "name-column--cell right",
-    //   align: "right",
-    //   headerAlign: "right",
-    // },
-    // {
-    //   field: "id",
-    //   headerName: "شناسه",
-    //   align: "right",
-    //   headerAlign: "right",
-    // },
-    
-    
+    {
+      field: "sellerId",
+      headerName: "شناسه فروشنده",
+      flex: 1,
+      cellClassName: "name-column--cell right",
+      align: "right",
+      headerAlign: "right",
+    },
+    {
+      field: "id",
+      headerName: "شناسه",
+      align: "right",
+      headerAlign: "right",
+    },
   ];
   return  (
   <>
@@ -152,7 +137,7 @@ function Orders() {
         }}
       >
         <DataGrid
-          rows={orders}
+          rows={data}//orders
           columns={columns}
           components={{ Toolbar: GridToolbar }}
           getRowId={(row) => row.order_id}

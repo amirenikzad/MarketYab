@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from 'react';
 import { ResponsiveLine } from "@nivo/line";
 import { mockLineData as data } from "../data/mockData";
 import { tokens } from "../theme";
@@ -6,6 +6,33 @@ import { useTheme, GlobalStyles } from "@mui/material";
 function LineChart() {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const [linechart, setLinechart] = useState([]);
+
+  useEffect(() => {
+    const fetchLinechart = async () => {
+      try {
+        const token = localStorage.getItem("jwt");
+        const link  = localStorage.getItem("link");
+        const response = await fetch(`${link}/v1/test`, {
+          method: "GET",
+          headers: {
+            "Authorization": `Bearer ${token}`,
+          },
+        });
+        const data = await response.json();
+        console.log("Linechart data: ", data);
+        if (!response.ok) {
+          throw new Error("Failed to fetch Linechart");
+        }
+        setLinechart(data);
+      } catch (error) {
+        console.error("Error fetching Linechart:", error);
+      }
+    };
+  
+    fetchLinechart();
+  }, []);
+
   return (
     <>
     <GlobalStyles
@@ -64,7 +91,7 @@ function LineChart() {
         },
         tooltip: {
           container: {
-            background: colors.blueAccent[100],
+            background: colors.blueAccent[900],
             fontSize: 12,
           },
           text: {
@@ -77,7 +104,7 @@ function LineChart() {
           tableCellValue: {},
         },
       }}
-      data={data}
+      data={data}//linechart
       margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
       xScale={{ type: "point" }}
       yScale={{

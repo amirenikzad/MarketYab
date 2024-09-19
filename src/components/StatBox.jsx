@@ -1,6 +1,6 @@
 import { Box, Typography, useTheme } from "@mui/material";
 import { tokens } from "../theme";
-import ProgressCircle from "./ProgressCircle";
+import OnlyProgressCircle from "./OnlyProgressCircle";
 
 const StatBox = ({ title, subtitle, icon, progress, increase }) => {
   const theme = useTheme();
@@ -10,15 +10,22 @@ const StatBox = ({ title, subtitle, icon, progress, increase }) => {
     <Box width="100%" m="0 30px">
       <Box display="flex" justifyContent="space-between" textAlign={"center"} >
       <Box>
-          <ProgressCircle progress={progress} />
+          <OnlyProgressCircle progress={progress} />
         </Box>
         <Box >
-          {icon}
+        <Typography
+            variant="h5"
+            fontWeight="bold"
+            sx={{ color: colors.grey[100] }}
+            style={{fontSize:"19px" ,fontFamily:"Dana", textAlignLast:"right"}}
+          >
+            {icon}
+          </Typography>
           <Typography
             variant="h5"
             fontWeight="bold"
             sx={{ color: colors.grey[100] }}
-            style={{ fontFamily:"Dana", textAlignLast:"right"}}
+            style={{fontSize:"19px" ,fontFamily:"Dana", textAlignLast:"right"}}
           >
             {title}
           </Typography>
@@ -29,10 +36,11 @@ const StatBox = ({ title, subtitle, icon, progress, increase }) => {
           variant="h5"
           fontStyle="italic"
           sx={{ color: colors.greenAccent[600] }}
+          style={{fontSize:"15px" ,fontFamily:"Dana", textAlignLast:"right"}}
         >
           {increase}
         </Typography>
-        <Typography variant="h7" sx={{ color: colors.greenAccent[200] }} style={{ fontFamily:"Dana"}} >
+        <Typography variant="h7" sx={{ color: colors.greenAccent[200] }} style={{fontSize:"16px" , fontFamily:"Dana"}} >
           {subtitle}
         </Typography>
         
